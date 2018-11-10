@@ -1,0 +1,16 @@
+<% include ./partials/header %>
+<% include ./partials/navbar %>
+<div class="flex-container">
+  <div class="text-center" style="width: 355px; margin: 25px auto;">
+      <h1 class="mb-1"><i class="fas fa-user"></i></h1>
+      <form action="/login" method="post">
+        <h3 class="mb-4">Please login</h3>
+        <label for="email" class="sr-only">Eamil</label>
+          <input type="email" name="username" class="form-control mt-1" placeholder="Email" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" class="form-control mt-2" name="password" placeholder="Password" required>
+        <button class="btn btn-outline-info btn-block mt-2" type="submit">Login</button>
+      </form>
+  </div>
+</div>
+<% include ./partials/footer %>

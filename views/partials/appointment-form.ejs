@@ -1,0 +1,76 @@
+<!-- Appointment-form -->
+<div class="container mt-5 mb-5">
+  <div class="alert alert-danger fixed-top mt-5" style="display:none;" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> Missing field!
+  </div>
+  <form id="appointment-form" action="/appointments/new" method="post">
+    <h1 class="lead">Enter a New Appointment</h1>
+    <input type="hidden" value="false" name="isCheckedIn" />
+    <div class="row mt-3">
+      <div class="col-md-4 mb-1">
+        <label class="success" for="firstName">First name</label>
+        <input type="text" aria-label="First name" class="form-control" onkeyup="javascript:capitalize(this);" name="firstName" placeholder="First name" maxlength="30" required>
+      </div>
+      <div class="col-md-4 mb-1">
+        <label for="lastName">Last name</label>
+        <input type="text" aria-label="Last name" class="form-control" onkeyup="javascript:capitalize(this);" name="lastName" placeholder="Last name" maxlength="30" required>
+      </div>
+      <div class="col-md-4 mb-1">
+        <label for="phoneNumber">Phone number</label>
+        <input "(000) 000-0000" type="text" aria-label="Phone Number" class="form-control phone_us" name="phoneNumber" placeholder="(123) 456-7890" required>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-4 mb-1">
+        <label for="date">Date</label>
+        <input data-mask="0000-00-00" type="text" aria-label="Date" width="100%" id="datepicker" class="form-control date" name="date" placeholder="YYYY-MM-DD" required/>
+      </div>
+      <div class="col-md-4 mb-1">
+        <label for="time">Time</label>
+        <select class="form-control select" aria-label="Time" name="time" min="1" required>
+          <option disabled selected>Time</option>
+          <option value="04:00">04:00am</option>
+          <option value="04:30">04:30am</option>
+          <option value="05:00">05:00am</option>
+          <option value="05:30">05:30am</option>
+          <option value="06:00">06:00am</option>
+          <option value="06:30">06:30am</option>
+          <option value="07:00">07:00am</option>
+          <option value="07:30">07:30am</option>
+          <option value="08:00">08:00am</option>
+          <option value="08:30">08:30am</option>
+          <option value="09:00">09:00am</option>
+          <option value="09:30">09:30am</option>
+          <option value="10:00">10:00am</option>
+          <option value="10:30">10:30am</option>
+          <option value="11:00">11:00am</option>
+          <option value="11:30">11:30am</option>
+          <option value="12:00">12:00pm</option>
+          <option value="12:30">12:30pm</option>
+          <option value="13:00">01:00pm</option>
+          <option value="13:30">01:30pm</option>
+          <option value="14:00">02:00pm</option>
+          <option value="14:30">02:30pm</option>
+          <option value="15:00">03:00pm</option>
+          <option value="15:30">03:30pm</option>
+          <option value="16:00">04:00pm</option>
+          <option value="16:30">04:30pm</option>
+          <option value="17:00">05:00pm</option>
+          <option value="17:30">05:30pm</option>
+          <option value="18:00">06:00pm</option>
+          <option value="18:30">06:30pm</option>
+          <option value="19:00">07:00pm</option>
+          <option value="19:30">07:30pm</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label style="color:#fff;" for="submit">Submit</label>
+        <span><button id="submit" type="submit" name="submit" class="btn btn-outline-info btn-block">Submit</button></span>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container" style="color: #939393;">
+    <p>Note: The average Health Care visit is between 30 min to 2 hours including wait time.</p>
+</div>

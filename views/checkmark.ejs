@@ -1,0 +1,24 @@
+<% include ./partials/header %>
+<% include ./partials/navbar %>
+<div class="flex-container">
+  <div class="container mt-5">
+    <h1 class="text-center">Checked in Patient</h1>
+    <div class="check_mark">
+      <div class="sa-icon sa-success animate">
+        <span class="sa-line sa-tip animateSuccessTip"></span>
+        <span class="sa-line sa-long animateSuccessLong"></span>
+        <form class="check-in-form" action="" method="POST">
+        <div class="sa-placeholder"></div>
+        <div class="sa-fix"></div>
+      </div>
+    </div>
+    <h3 class="text-center">Sending message to Doctor...</h3>
+  </div>
+</div>
+<script>
+  setTimeout(function () {
+     // after 1 seconds
+     window.location = "/";
+  }, 2000)
+</script>
+<% include ./partials/footer %>

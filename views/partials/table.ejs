@@ -1,0 +1,72 @@
+<% include ./delete-modal %>
+<!-- table -->
+<div class="container mt-5 mb-5 table-responsive">
+  <div class="row mb-2">
+    <div class="col-md-6 col-xs-12">
+      <h1 class="lead" style="display:inline"><a href="/appointments">Appointments</a></h1>
+      <button type="button" class="btn btn-outline-info btn-sm ml-3" style="display:inline;" onClick="window.location.reload()"><i class="fas fa-sync-alt"></i> Refresh</button>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <div class="pager float-right">
+          <select class="form-control pagesize" name="pagesize">
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+      </div>
+    </div>
+  </div>
+  <table id="myTable" class="table table-striped tablesorter {sortlist: [[2,2],[3,0]]}">
+    <thead>
+      <tr>
+        <th class="pointer table-border th-appointments">Name <i class="fas fa-sort"></i></th>
+        <th class="pointer table-border th-appointments">Phone <i class="fas fa-sort"></i></i></th>
+        <th class="pointer table-border th-appointments">Date <i class="fas fa-sort"></i></i></th>
+        <th class="pointer table-border th-appointments">Time <i class="fas fa-sort"></i></i></th>
+        <th class="pointer table-border th-appointments" style="text-align:center;">Check-in</th>
+        <th class="pointer table-border th-appointments" style="text-align:center;">Delete</th>
+      </tr>
+    </thead>
+    <tbody class="appointments-hover">
+      <% for(var i = 0; i < appointmentList.length; i++) { %>
+        <tr class="entries hover-table">
+          <td class="name text-capitalize table-border td-appointments"><%= appointmentList[i].lastName %>, <%= appointmentList[i].firstName %></td>
+          <td class="phone table-border td-appointments"><%= appointmentList[i].phoneNumber %></td>
+          <td class="date table-border td-appointments"><%= appointmentList[i].date %></td>
+          <% var time = appointmentList[i].time %>
+          <% time = time.split(':'); %>
+          <% var hours = Number(time[0]); %>
+          <% var minutes = Number(time[1]); %>
+          <% var timeValue; %>
+          <% if (hours > 0 && hours <= 12) { %>
+            <% timeValue= "" + hours; %>
+          <% } else if (hours > 12) { %>
+            <% timeValue= "" + (hours - 12); %>
+          <% } else if (hours == 0) { %>
+            <% timeValue= "12"; %>
+          <% } %>
+          <% timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes; %>
+          <% timeValue += (hours >= 12) ? " pm" : " am";  %>
+          <td class="time table-border td-appointments"><%= timeValue %></td>
+          <td class="table-border td-appointments" style="background-color: white; text-align:center;">
+              <% if (appointmentList[i].isCheckedIn !== true){ %>
+                <form class="check-in-form" action="/appointments/<%= appointmentList[i]._id %>?_method=PUT" method="POST">
+                  <button class="btn-check btn btn-sm btn-outline-info">
+                    <i class="far fa-check-square"></i> Check-in</button>
+                </form>
+              <% } else if (appointmentList[i].isCheckedIn == true){ %>
+                <span class="isCheckedIn"><i class="fas fa-check-circle"></i> Checked-in</span>
+              <% } %>
+          </td>
+          <td class="table-border td-appointments" style="background-color: white; text-align:center;">
+            <button type="submit" data-toggle="modal" data-target="#myModal" data-id="<%= appointmentList[i]._id %>" class="btn btn-sm btn-outline-danger">
+              <i class="far fa-trash-alt"></i> Delete</button>
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>

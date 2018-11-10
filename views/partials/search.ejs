@@ -1,0 +1,21 @@
+<!-- Search -->
+<div class="container mt-5 mb-5">
+  <h1 class="lead mb-3">Search Appointments</h1>
+  <form action="/appointments/results" method="GET" autocomplete="off">
+    <div class="row">
+      <div class="col-md-5 mb-1">
+        <label for="formSearchLastName">Search by last name</label>
+        <input class="form-control" aria-label="Search by last name" onkeyup="javascript:capitalize(this);" type="text" name="formSearchLastName" name="formSearchLastName" placeholder="Search by last name"/>
+      </div>
+      <div class="col-md-5 mb-1">
+        <label for="formSearchDate">Search by date</label>
+        <input data-mask="0000-00-00" class="form-control date" type="text" aria-label="Search by Date" width="100%" id="searchDatepicker" name="formSearchDate" placeholder="Search by date YYYY-MM-DD" />
+      </div>
+      <div class="col-md-2 mb-2">
+        <label style="color:#fff;">Search</label>
+        <button class="btn btn-outline-info btn-block" type="submit"><i class="fas fa-search"></i> Search</button>
+      </div>
+    </div>
+  </form>
+
+</div>

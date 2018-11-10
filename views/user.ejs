@@ -1,0 +1,26 @@
+<% include ./partials/header %>
+<% include ./partials/navbar %>
+<div class="container flex-container mt-2 userProfile">
+  <h2 class="mb-3">User Profile</h2>
+  <hr>
+  <div class="row lead user-profile-section">
+    <div class="col col-md-auto">
+      <p>Username:</p>
+      <p class="profile-text-email"><%= currentUser.username %></p>
+      <hr>
+      <p>Organization:</p>
+      <p class="profile-text"><%= currentUser.organization %></p>
+    </div>
+    <div class="col col-md-auto">
+      <p>First Name:</p>
+      <p class="profile-text"><%= currentUser.userFirstName %></p>
+      <hr>
+      <p>Last Name:</p>
+      <p class="profile-text"><%= currentUser.userLastName %></p>
+    </div>
+  </div>
+</div>
+<div class="container note mt-2">
+  <p class="lead mt-1">Profile editing capabilities are disabled at this time.</p>
+</div>
+<% include ./partials/footer %>
